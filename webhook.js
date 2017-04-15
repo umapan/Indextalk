@@ -93,7 +93,7 @@ app.post('/ai', (req, res) => {
       if (!error && response.statusCode == 200) {
         //var json = JSON.parse(body[0]);
 
-        var msg = 'หุ้น ' + body[0].t + ' ราคา ' + body[0].l + 'บาท' + 'เปลี่ยนแปลง' + body[0].c + 'บาท' + '('+ body[0].cp+'%)' ' ข้อมูล ณ ' + body[0].dts;
+        var msg = 'หุ้น ' + body[0].t + ' ราคา ' + body[0].l + 'บาท เปลี่ยนแปลง' + body[0].c + 'บาท ('+ body[0].cp+'%) ข้อมูล ณ ' + body[0].dts;
         return res.json({speech: msg,displayText: msg,source: 'stock_name'});
         console.log(body);
       } else {
