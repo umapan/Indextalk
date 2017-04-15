@@ -85,7 +85,7 @@ app.post('/ai', (req, res) => {
   console.log(req.body.result);
 
   if (req.body.result.action === 'AskStock') {
-    console.log('*** weather ***');
+    console.log('*** Stock Symbols ***');
     var stock_name = req.body.result.parameters['stockname'];
     var restUrl = 'https://google-stocks.herokuapp.com/?code=BKK:'+stock_name+'&format=json';
 
@@ -93,7 +93,7 @@ app.post('/ai', (req, res) => {
       if (!error && response.statusCode == 200) {
         //var json = JSON.parse(body[0]);
 
-        var msg = 'หุ้น ' + body[0].t + ' ราคา ' + body[0].l;
+        var msg = 'หุ้น ' + body[0].t + ' ราคา ' + body[0].l + body[0].2 + body[0].3;
         return res.json({speech: msg,displayText: msg,source: 'stock_name'});
         console.log(body);
       } else {
