@@ -91,8 +91,8 @@ app.post('/ai', (req, res) => {
     var restUrl = 'https://google-stocks.herokuapp.com/?code=BKK:'+stock_name+'&format=json';
 
     request({url: restUrl,json: true }, function (error, response, body) {
-      if(!error && response.statusCode == 200 && body[0]){
-        msg = 'หุ้น ' + body[0].t + ' ราคา ' + body[0].l + ' บาท เปลี่ยนแปลง ' + body[0].c + ' บาท ('+ body[0].cp+'%) ข้อมูล ณ ' + body[0].lt;
+      if(!error && response.statusCode == 200 && body[0].t){
+        msg = 'หุ้น ' + body[0].t + ' ราคา ' + body[0].l + ' บาท เปลี่ยนแปลง ' + body[0].c + ' บาท ('+ body[0].cp +'%) ข้อมูล ณ ' + body[0].lt;
       }else{
         msg = 'I failed to look up stock name.';
       }
