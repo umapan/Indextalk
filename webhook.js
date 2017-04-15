@@ -81,23 +81,21 @@ function sendMessage(event) {
 
 /* Webhook for API.ai to get response from the 3rd party API */
 app.post('/ai', (req, res) => {
-  var msg = '';
-  console.log('*** Webhook for api.ai query ***');
-  console.log(req.body.result);
 
   if (req.body.result.action === 'AskStock') {
-    console.log('*** Stock Symbols ***');
     var stock_name = req.body.result.parameters['stockname'];
     var restUrl = 'https://google-stocks.herokuapp.com/?code=BKK:'+stock_name+'&format=json';
 
     request({url: restUrl,json: true }, function (error, response, body) {
-      if(!error && response.statusCode == 200 && body[0]){
-        msg = 'หุ้น ' + body[0].t + ' ราคา ' + body[0].l + ' บาท เปลี่ยนแปลง ' + body[0].c + ' บาท ('+ body[0].cp +'%) ข้อมูล ณ ' + body[0].lt;
-      }else{
-        msg = 'I failed to look up stock name.';
-      }
+      if (!error && response.statusCode == 200) {
+        //var json = JSON.parse(body[0]);
 
-      return res.json({speech: msg,displayText: msg,source: 'stock_name'});
+        var msg = 'หุ้น ' + body[0].t + ' ราคา ' + body[0].l + ' บาท เปลี่ยนแปลง ' + body[0].c + ' บาท ('+ body[0].cp +'%) ข้อมูล ณ ' + body[0].lt;
+        return res.json({speech: msg,displayText: msg,source: 'stock_name'});
+      } else {
+        var errorMessage = 'I failed to look up stock name.';
+        return res.status(400).json({ status: {code: 400,errorType: errorMessage}});
+      }
     })
   }
 
