@@ -88,8 +88,8 @@ app.post('/ai', (req, res) => {
 
     request({url: restUrl,json: true }, function (error, response, body) {
       if (!error && response.statusCode == 200 && body[0]) {
-
-        var msg = 'หุ้น ' + body[0].t + ' ราคา ' + body[0].l + ' บาท เปลี่ยนแปลง ' + body[0].c + ' บาท ('+ body[0].cp +'%) ข้อมูล ณ ' + body[0].lt;
+        
+        var msg = 'หุ้น ' + body[0].t + ' ราคา ' + body[0].l + ' บาท เปลี่ยนแปลง ' + body[0].c + ' บาท ';
         return res.json({speech: msg,displayText: msg,source: 'stock_name'});
       } else {
         var errorMessage = 'I failed to look up stock name.';
