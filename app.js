@@ -99,8 +99,9 @@ app.post('/ai', (req, res) => {
       if (!error && response.statusCode == 200 && body) { 
         callStockGOGL.push(body.substring(3));
         var result = JSON.parse(callStockGOGL);
-
+        
         msg = 'ชื่อหุ้น ' + result[0].t + ' ราคา ' + result[0].l + ' บาท เปลี่ยนแปลง ' + result[0].c + ' บาท ('+ result[0].cp+'%) ข้อมูล ณ ' + result[0].lt;
+        console.log(msg);
         return res.json({speech: msg,displayText: msg,source: 'stock_name'});
         
         /*
@@ -138,6 +139,7 @@ app.post('/ai', (req, res) => {
                     msgDW += 'Underlying ' + json['resultSet'][cun].UnderlyingSym + ' DW: '+ json['resultSet'][cun].SecSym + ' ราคา ' + json['resultSet'][cun].LstPrice + ' ';
                   //}
                 }
+              console.log(msgDW);
                 return res.json({speech: msgDW,displayText: msgDW,source: 'stock_name'});
             });
           }
