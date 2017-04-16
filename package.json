@@ -1,0 +1,38 @@
+{
+  "name": "fb-weather-bot",
+  "version": "0.1.0",
+  "description": "Facebook bot using api.ai",
+  "main": "webhook.js",
+  "scripts": {
+    "start": "nf start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/girliemac/fb-apiai-bot-simple.git"
+  },
+  "keywords": [
+    "bot",
+    "ai",
+    "chat",
+    "facebook",
+    "messenger"
+  ],
+  "author": "Tomomi ❤️ Imura",
+  "license": "MIT",
+  "dependencies": {
+    "api.ai": "^1.0.3",
+    "apiai": "^3.0.3",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "google-finance": "^0.1.9",
+    "google-stocks": "^1.0.1",
+    "request": "^2.81.0",
+    "xml2js": ""
+  },
+  "bugs": {
+    "url": "https://github.com/girliemac/fb-apiai-bot-simple/issues"
+  },
+  "homepage": "https://github.com/girliemac/fb-apiai-bot-simple#readme",
+  "devDependencies": {}
+}
